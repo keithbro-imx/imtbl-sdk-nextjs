@@ -1,10 +1,14 @@
-import { immutablexClient, config } from "@imtbl/sdk";
+import { Environment, ImmutableConfiguration } from "@imtbl/sdk/config";
+import { ImmutableXClient } from "@imtbl/sdk/immutablex_client";
 
-export function POST() {
-  const x = new immutablexClient.ImmutableXClient({
-    baseConfig: new config.ImmutableConfiguration({
-      environment: config.Environment.SANDBOX,
+export async function POST() {
+  const x = new ImmutableXClient({
+    baseConfig: new ImmutableConfiguration({
+      environment: Environment.SANDBOX,
     }),
   });
-  return Response.json({});
+
+  const collections = await x.collectionApi.listCollections();
+
+  return Response.json({ collections: collections.data.result });
 }

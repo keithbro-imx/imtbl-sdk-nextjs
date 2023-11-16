@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@imtbl/sdk/*": ["./node_modules/@imtbl/sdk/dist/*"],
     }
   }
 }
