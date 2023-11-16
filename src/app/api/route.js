@@ -1,6 +1,10 @@
-import { immutablexClient } from "@imtbl/sdk";
+import { immutablexClient, config } from "@imtbl/sdk";
 
 export function POST() {
-    const x = new immutablexClient.ImmutableXClient()
-    return Response.json({})
+  const x = new immutablexClient.ImmutableXClient({
+    baseConfig: new config.ImmutableConfiguration({
+      environment: config.Environment.SANDBOX,
+    }),
+  });
+  return Response.json({});
 }
